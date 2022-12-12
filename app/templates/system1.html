@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Choose a genre
+        </button>
+        
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <form action="" method="post">
+            {% for genre in genres %}
+                <input type="submit" name="submit_button" value={{genre}}  class="dropdown-item">
+            {% endfor %}
+            </form>
+        </div>
+    
+    </div>
+    {% if movies  %}
+    <div class="flex-container">
+        {% for key, value in movies.items() %}
+        <div class="movie"><img src="{{ url_for('static', filename=key+'.jpg') }}" /> Movie name: {{value}}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endblock content %}

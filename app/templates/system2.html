@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+{% if select_movies  %}
+<h2> Top choices for you</h2>
+<div class="flex-container">
+
+    {% for key, value in select_movies.items() %}
+    <div class="movie"><img src="{{ url_for('static', filename=key+'.jpg') }}" /> Movie name: {{value}}</div>
+    {% endfor %}
+
+</div>
+{% endif %}
+
+{% if movies %}
+
+<form action="" method="post">
+<div class="flex-container">
+    {% for key, value in movies.items() %}
+    <div class="movie"><img src="{{ url_for('static', filename=key+'.jpg') }}" /> Movie name: {{value}}
+
+        <div class="form-group">
+            <select class="form-control" id="exampleFormControlSelect1", name={{key}}>
+              <option value="{{ 0 }}">Please select</option>
+              <option value="{{ 1 }}">1</option>
+              <option value="{{ 2 }}">2</option>
+              <option value="{{ 3 }}">3</option>
+              <option value="{{ 4 }}">4</option>
+              <option value="{{ 5 }}">5</option>
+            </select>
+          </div>
+
+    </div>
+    
+    {% endfor %}
+</div>
+<button type="submit" class="btn btn-primary" name="b" value=100>Submit</button>
+</form>
+
+{% endif %}
+{% endblock content %}

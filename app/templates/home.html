@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="flex-container">
+    {% for key, value in movies.items() %}
+    <div class="movie"><img src="{{ url_for('static', filename=key+'.jpg') }}" /> Movie name: {{value}}</div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
